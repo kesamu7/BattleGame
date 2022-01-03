@@ -1,10 +1,13 @@
-﻿<div class="top-menu">
+﻿@inject IPizzaSliceService PizzaSliceService
+@implements IDisposable
+
+<div class="top-menu">
     <img src="icons/pizza.png"
          width="25"
          height="25"
     />
     <span class="popover-header">
-    @PizzaSlices
+        @PizzaSliceService.PizzaSlices
     </span>
     <AddPizzaSlices PizzaSlicesAdded="AddPizzaSlices"/>
 </div>
@@ -14,6 +17,16 @@
 @code {
     [Parameter]
     public int PizzaSlices { get; set; } = 75;
+
+    protected override void OnInitialized()
+    {
+        PizzaSliceService.OnChange += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        PizzaSliceService.OnChange -= StateHasChanged;
+    }
 
     public void AddPizzaSlices(int value)
     {
