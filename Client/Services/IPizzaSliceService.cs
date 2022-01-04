@@ -7,6 +7,7 @@
         public int PizzaSlices { get; set; }
         
         void EatPizzaSlices(int amount);
+        void AddPizzaSlices(int amount);
 
     }
 }

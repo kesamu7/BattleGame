@@ -13,5 +13,11 @@
         }
 
         void PizzaSlicesChanged() => OnChange.Invoke();
+
+        public void AddPizzaSlices(int amount)
+        {
+            PizzaSlices += amount;
+            PizzaSlicesChanged();
+        }
     }
 }

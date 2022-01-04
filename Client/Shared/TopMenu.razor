@@ -9,12 +9,10 @@
     <span class="popover-header">
         @PizzaSliceService.PizzaSlices
     </span>
-    <AddPizzaSlices PizzaSlicesAdded="AddPizzaSlices"/>
+    <AddPizzaSlices/>
 </div>
 
 @code {
-    [Parameter]
-    public int PizzaSlices { get; set; } = 75;
 
     protected override void OnInitialized()
     {
@@ -26,8 +24,4 @@
         PizzaSliceService.OnChange -= StateHasChanged;
     }
 
-    public void AddPizzaSlices(int value)
-    {
-        PizzaSlices += value;
-    }
 }
