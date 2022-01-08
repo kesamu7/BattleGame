@@ -1,14 +1,16 @@
 ﻿@page "/build"
 @inject IPizzaSliceService PizzaSliceService
+@inject IBattleUnitService BattleUnitService
 
 <h3>Build</h3>
 
 <button class="btn btn-primary" @onclick="() => EatPizzaSlices(10)">Eat Pizza Slices</button>
 
 @code {
-    private void EatPizzaSlices(int amount)
-    {
-        PizzaSliceService.EatPizzaSlices(amount);
+    int selectedUnitId = 1;
 
-    }
+    public void BuildUnit()
+    {
+        var selectedUnit = BattleUnitService.BattleUnits.FirstOrDefault(battleUnit => battleUnit.Id == selectedUnitId);
+    }   
 }
